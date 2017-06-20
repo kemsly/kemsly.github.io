@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Spectral');
 html, body {
-  background:url(https://source.unsplash.com/collection/220388);
+  background:url(https://source.unsplash.com/collection/957092);
   background-repeat:no-repeat;
   background-size:cover;
   font-family:'Lato', sans-serif;
@@ -9,8 +9,9 @@ html, body {
 }
 #clock,#day,#date {
   font-family:'Spectral', serif;
-  background:rgba(255, 255, 255, 0.35);
+  background:rgba(0, 0, 0, 0.65);
   display:table;
   padding:5px;
   margin:0;
+  color:white;
 }
