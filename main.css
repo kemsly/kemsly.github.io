@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Spectral');
+html, body {
+  background:url(https://source.unsplash.com/collection/220388);
+  background-repeat:no-repeat;
+  background-size:cover;
+  font-family:'Lato', sans-serif;
+  padding:0;
+  margin:0;
+}
+#clock,#day,#date {
+  font-family:'Spectral', serif;
+  background:rgba(255, 255, 255, 0.35);
+  display:table;
+  padding:5px;
+  margin:0;
+}
