@@ -6,7 +6,7 @@ function getLocation(position) {
   var x=position.coords.latitude;
   var y=position.coords.longitude;
   var request=new XMLHttpRequest();
-  var url='http://maps.googleapis.com/maps/api/geocode/json?latlng='+x+','+y+'&sensor=true';
+  var url='https://maps.googleapis.com/maps/api/geocode/json?latlng='+x+','+y+'&sensor=true';
   request.onreadystatechange=function() {
     if(request.readyState==4&&request.status==200) {
       var data=JSON.parse(request.responseText);
