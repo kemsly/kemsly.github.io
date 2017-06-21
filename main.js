@@ -1,27 +1,22 @@
 $(document).ready(function() {
   startTime();
 });
-
-getLocation=function(position) {
+var loc = "Sarnia, Ontario, Canada";
+function getLocation(position) {
   var x=position.coords.latitude;
   var y=position.coords.longitude;
   var request=new XMLHttpRequest();
   var url='http://maps.googleapis.com/maps/api/geocode/json?latlng='+x+','+y+'&sensor=true';
-  request.open('GET',url,true);
   request.onreadystatechange=function() {
     if(request.readyState==4&&request.status==200) {
-      Console.log(request.responseText);
       var data=JSON.parse(request.responseText);
       var addressComponents=data.results[0].address_components;
-      for(i=0;i<addressComponents.length;i++) {
-        var types=addressComponents[i].types;
-        if(types=="locality,political") {
-          var location=addressComponents[i].long_name;
-        }
-      }
+      loc=addressComponents[2].long_name+", "+addressComponents[4].long_name+", "+addressComponents[5].long_name;
+      getWeather();
     }
   }
-  getWeather();
+  request.open('GET',url,true);
+  request.send();
 }
 navigator.geolocation.getCurrentPosition(getLocation);
 
@@ -48,7 +43,7 @@ function startTime() {
 
 function getWeather() {
   $.simpleWeather({
-    location:location,
+    location:loc,
     woeid:'',
     unit:'c',
     success: function(weather) {
