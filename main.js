@@ -1,6 +1,30 @@
 $(document).ready(function() {
   startTime();
 });
+
+getLocation=function(position) {
+  var x=position.coords.latitude;
+  var y=position.coords.longitude;
+  var request=new XMLHttpRequest();
+  var url='http://maps.googleapis.com/maps/api/geocode/json?latlng='+x+','+y+'&sensor=true';
+  request.open('GET',url,true);
+  request.onreadystatechange=function() {
+    if(request.readyState==4&&request.status==200) {
+      Console.log(request.responseText);
+      var data=JSON.parse(request.responseText);
+      var addressComponents=data.results[0].address_components;
+      for(i=0;i<addressComponents.length;i++) {
+        var types=addressComponents[i].types;
+        if(types=="locality,political") {
+          var location=addressComponents[i].long_name;
+        }
+      }
+    }
+  }
+  getWeather();
+}
+navigator.geolocation.getCurrentPosition(getLocation);
+
 function startTime() {
   var cTime=new Date();
   var h=cTime.getHours();
@@ -15,11 +39,26 @@ function startTime() {
 
   s=cTime.getHours()>12?s+' PM':s+' AM';
   h=h>12? parseInt(h)-12:h;
-  $('#clock').html(h+'<span>:</span>'+m+'<span>:</span>'+s);
+  $('#clock').html(h+':'+m+':'+s);
   $('#day').html(days[cTime.getDay()]+'day');
   $('#date').html(months[cTime.getMonth()]+' '+cTime.getDate()+', '+cTime.getFullYear());
 
   setTimeout(function(){startTime()}, 500);
+}
+
+function getWeather() {
+  $.simpleWeather({
+    location:location,
+    woeid:'',
+    unit:'c',
+    success: function(weather) {
+      html='<h2><i class="icon-"'+weather.code+'"></i>'+weather.temp+'&deg;'+weather.units.temp+'</h2>';
+      html+='<h3>'+weather.city+'</h3>';
+      html+='<h2>'+weather.currently+'</h2>';
+      html+='<h2>'+weather.wind.direction+' '+Math.round(weather.wind.speed*0.868976)+' KNTS</h2>';
+      $("#weather").html(html);
+    }
+  });
 }
 
 function checkTime(i) {
