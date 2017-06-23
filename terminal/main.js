@@ -17,9 +17,26 @@ function KeyPress(e) {
         evtobj.preventDefault();
       }
 }
-
+function startClock() {
+  var cTime=new Date();
+  var h=cTime.getHours();
+  var m=cTime.getMinutes();
+  var s=cTime.getSeconds();
+  var days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  h=checkTime(h);
+  m=checkTime(m);
+  s=checkTime(s);
+  $('#day').html(days[cTime.getDay()]);
+  $('#clock').html("<span>"+days[cTime.getDay()]+"</span>"+h+':'+m+':'+s);
+  setTimeout(function(){startClock()}, 500);
+}
+function checkTime(i) {
+  i=i<10?i='0'+i:i;
+  return i;
+}
 document.onkeydown = KeyPress;
 $(document).ready(function() {
+  startClock();
   $("#terminal").keydown(function(event) {
     if(event.which==13) {
       rncmd($("#terminal").val());
