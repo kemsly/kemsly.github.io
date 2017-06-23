@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+html,body {
+  margin:0;
+  padding:0;
+  background:url(bg.jpg);
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
+  font-family: 'Open Sans', sans-serif;
+  color:rgb(240, 240, 240);
+}
+.top-bar {
+  width:100%;
+  height:25px;
+  background:rgba(38, 38, 38, 0.85);
+  -webkit-box-shadow: 0px 10px 32px -2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 10px 32px -2px rgba(0,0,0,0.75);
+  box-shadow: 0px 10px 32px -2px rgba(0,0,0,0.75);
+}
+#clock {
+  position:relative;
+  float:right;
+  top:-38px;
+  background:rgb(10, 10, 10);
+  height:25px;
+  padding:0;
+  margin:0;
+}
+#clock span {
+  position:relative;
+  background:rgb(25, 25, 25);
+  height:inherit;
+  top:2px;
+  border:1px solid rgb(25, 25, 25);
+}
+.container {
+  padding:2vh 2vw 2vh 2vw;
+  height:96vh;
+  width:96vw;
+  position:absolute;
+  top:0;
+  left:0;
+}
+.window {
+  background:rgba(38, 38, 38, 0.7);
+  width:calc(48% - 10px);
+  margin:1%;
+  margin-top:1.5%;
+  margin-bottom:1.5%;
+  padding-left:5px;
+  padding-right:5px;
+  -webkit-box-shadow: 0px 0px 32px 10px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 32px 10px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 32px 10px rgba(0,0,0,0.75);
+  display:inline-block;
+  vertical-align:top;
+}
+.full {
+  height:96%;
+}
+.two-thirds {
+  height:62%;
+  float:right;
+}
+.one-third {
+  height:28%;
+  margin-top:-30vh;
+  float:right;
+}
+.full textarea {
+  width:100%;
+  height:calc(100% - 50px);
+  background:transparent;
+  border:none;
+  resize:none;
+  color:white;
+}
+input[type="text"] {
+  position:relative;
+  background:transparent;
+  border:none;
+  resize:none;
+  color:white;
+  font-size:13pt;
+  cursor:default;
+}
+input[type="text"]:focus {
+  outline:none;
+}
+#pasteform {
+  margin:0;
+  padding:0;
+}
