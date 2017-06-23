@@ -2,7 +2,7 @@ function KeyPress(e) {
       var evtobj = window.event? event : e
       if (evtobj.keyCode == 79 && evtobj.ctrlKey) {
         $.ajax({
-          url: "https://ptpb.pw/r",
+          url: "https://ptpb.pw",
           type: 'POST',
           data: {'c': $("#paste").val()},
           success: function(data) {
