@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
 html,body {
   margin:0;
   padding:0;
@@ -90,4 +90,13 @@ input[type="text"]:focus {
 #pasteform {
   margin:0;
   padding:0;
+}
+.one-third a {
+  color:rgb(255, 36, 36);
+  margin-right:130px;
+  text-decoration:none;
+  font-weight:bold;
+}
+span {
+  display:inline-block;
 }

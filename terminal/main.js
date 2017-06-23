@@ -1,3 +1,5 @@
+var name = "guest";
+var machine = "computer";
 function KeyPress(e) {
       var evtobj = window.event? event : e
       if (evtobj.keyCode == 79 && evtobj.ctrlKey) {
@@ -31,17 +33,19 @@ $(document).ready(function() {
 function rncmd(i) {
   i=i.toUpperCase();
   if(i=="HELP") {
-    $("#result").append("[guest@computer ~]$ help"
+    $("#result").append("["+name+"@"+machine+" ~]$ help"
     +"<br>Help - Display a list of commands"
     +"<br>Clear - Erase previous terminal text"
-    +"<br>Goto [address] - Redirects to entered address");
+    +"<br>Goto [address] - Redirects to entered address"
+    +"<br>Name [new name] - Change username"
+    +"<br>Machine [new machine name] - Change machine name");
   }
   else if(i=="CLEAR") {
     $("#result").html("");
   }
   else if(i.startsWith("GOTO")) {
     if(i.slice(4)=="") {
-      $("#result").append("[guest@computer ~]$ goto<br>Invalid command usage! Use \"Goto [address]\"");
+      $("#result").append("["+name+"@"+machine+" ~]$ goto<br>Invalid command usage! Use \"Goto [address]\"");
     }
     else {
       if(i.slice(5).startsWith("http") == false) {
@@ -52,8 +56,28 @@ function rncmd(i) {
       }
     }
   }
+  else if(i.startsWith("NAME")) {
+    if(i.slice(4)=="") {
+      $("#result").append("["+name+"@"+machine+" ~]$ name<br>Invalid command usage! Use\"Name [new name]\"");
+    }
+    else {
+      name = i.slice(5).toLowerCase();
+      $(".pcname").html(name + "@" + machine);
+      $("#result").append("["+name+"@"+machine+" ~]$ name<br>Name changed to \"" + name + "\"");
+    }
+  }
+  else if(i.startsWith("MACHINE")) {
+    if(i.slice(7)=="") {
+      $("#result").append("["+name+"@"+machine+" ~]$ machine<br>Invalid command usage! Use\"Machine [new machine name]\"");
+    }
+    else {
+      machine = i.slice(8).toLowerCase();
+      $(".pcname").html(name + "@" + machine);
+      $("#result").append("["+name+"@"+machine+" ~]$ name<br>Machine name changed to \"" + machine + "\"");
+    }
+  }
   else {
-    $("#result").append("[guest@computer ~]$ "+i.toLowerCase()+"<br>Invalid command! Use \"Help\" for a list of commands");
+    $("#result").append("["+name+"@"+machine+" ~]$ "+i.toLowerCase()+"<br>Invalid command! Use \"Help\" for a list of commands");
   }
   if(i!="CLEAR") {
     $("#result").append("<br>");
