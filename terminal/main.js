@@ -55,7 +55,8 @@ function rncmd(i) {
     +"<br>Clear - Erase previous terminal text"
     +"<br>Goto [address] - Redirects to entered address"
     +"<br>Name [new name] - Change username"
-    +"<br>Machine [new machine name] - Change machine name");
+    +"<br>Machine [new machine name] - Change machine name"
+    +"<br>Search [search query] - Search Google");
   }
   else if(i=="CLEAR") {
     $("#result").html("");
@@ -91,6 +92,14 @@ function rncmd(i) {
       machine = i.slice(8).toLowerCase();
       $(".pcname").html(name + "@" + machine);
       $("#result").append("["+name+"@"+machine+" ~]$ name<br>Machine name changed to \"" + machine + "\"");
+    }
+  }
+  else if(i.startsWith("SEARCH")) {
+    if(i.slice("6")=="") {
+      $("#result").append("["+name+"@"+machine+" ~]$ search<br>Invalid command usage! Use\"Search [search query]\"");
+    }
+    else {
+      window.location.href = "http\:\/\/google.com\/?q=" + i.slice(7);
     }
   }
   else {
