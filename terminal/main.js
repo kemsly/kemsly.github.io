@@ -99,7 +99,7 @@ function rncmd(i) {
       $("#result").append("["+name+"@"+machine+" ~]$ search<br>Invalid command usage! Use\"Search [search query]\"");
     }
     else {
-      window.location.href = "http\:\/\/google.com\/?q=" + i.slice(7).toLowerCase();
+      window.location.href = "http\:\/\/google.com\/search?q=" + i.slice(7).toLowerCase();
     }
   }
   else {
